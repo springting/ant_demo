@@ -1,4 +1,4 @@
-@import (reference) '~antd/es/style/themes/index';
+@import '~antd/es/style/themes/default.less';
 
 .list {
   max-height: 400px;
@@ -19,7 +19,7 @@
 
     .avatar {
       margin-top: 4px;
-      background: @component-background;
+      background: #fff;
     }
     .iconElement {
       font-size: 32px;
@@ -68,7 +68,7 @@
 }
 
 .notFound {
-  padding: 73px 0 88px;
+  padding: 73px 0 88px 0;
   color: @text-color-secondary;
   text-align: center;
   img {
@@ -92,7 +92,9 @@
     cursor: pointer;
     transition: all 0.3s;
     user-select: none;
-
+    &:hover {
+      color: @heading-color;
+    }
     &:only-child {
       width: 100%;
     }
