@@ -43,9 +43,14 @@ const formatFields = fieldsValue => {
     const end_at = fieldsValue.start_at[1].format('YYYY-MM-DD');
     fieldsValue = { ...fieldsValue, start_at, end_at };
   }
+  if ('start_time' in fieldsValue) {
+    const start_time = fieldsValue.start_time[0].format('YYYY-MM-DD HH:mm');
+    const end_time = fieldsValue.start_time[1].format('YYYY-MM-DD HH:mm');
+    fieldsValue = { ...fieldsValue, start_time, end_time };
+  }
   for (const k of Object.keys(fieldsValue)) {
     if (typeof fieldsValue[k] === 'object') {
-      fieldsValue[k] = fieldsValue[k].format('YYYY-MM-DD');
+      fieldsValue[k] = fieldsValue[k].format('YYYY-MM-DD HH:mm:ss');
     }
   }
   return fieldsValue;
@@ -125,7 +130,7 @@ const EditForm = Form.create()(props => {
   );
 });
 const DataRender = ({ openreport, form, dispatch, loading }) => {
-  const { params, dm, action, data, downfile, config, title } = openreport;
+  const { params, dm, action, data, downfile, config } = openreport;
   const [editVisible, setEditVisible] = useState(false);
   const [editRecord, setEditRecord] = useState(undefined);
   const [selectedRecords, setSelectedRecords] = useState([]);
@@ -444,12 +449,6 @@ const DataRender = ({ openreport, form, dispatch, loading }) => {
   }
   return (
     <Card bordered={false}>
-      {title && (
-        <div>
-          <h1>{title}</h1>
-          <Divider />
-        </div>       
-      )}
       {params && params.length > 0 ? (
         <Form onSubmit={handleSearch} layout="inline">
           {params.map(({ NAME, DESCRIPTION, TYPE }) => {
@@ -469,6 +468,25 @@ const DataRender = ({ openreport, form, dispatch, loading }) => {
                   {getFieldDecorator(NAME, {
                     rules: [{ required: true, message: `请输入${DESCRIPTION}！` }],
                   })(<DatePicker />)}
+                </Form.Item>
+              );
+            }
+            if (TYPE === 'DateTime') {
+              if (NAME === 'start_time') {
+                return (
+                  <Form.Item label="时间范围" key={NAME}>
+                    {getFieldDecorator('start_time', {
+                      rules: [{ required: true, message: '请输入时间范围！' }],
+                    })(<RangePicker showTime={{ format: 'HH:mm' }} format="YYYY-MM-DD HH:mm" />)}
+                  </Form.Item>
+                );
+              }
+              if (NAME === 'end_time') return null;
+              return (
+                <Form.Item label={DESCRIPTION} key={NAME}>
+                  {getFieldDecorator(NAME, {
+                    rules: [{ required: true, message: `请输入${DESCRIPTION}！` }],
+                  })(<DatePicker showTime={{ format: 'HH:mm' }} format="YYYY-MM-DD HH:mm" />)}
                 </Form.Item>
               );
             }

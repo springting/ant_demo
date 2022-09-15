@@ -43,7 +43,6 @@ const initState = {
   action: [],
   downfile: undefined,
   reportname: undefined,
-  title: '',
 };
 /*
 action字段文档：
@@ -80,11 +79,11 @@ const OpenReportModel = {
       if (r.err !== 0) {
         message.error(`参数配置获取失败！请尝试刷新页面或联系管理员。reportname=${reportname}`);
       }
-      const { data, dm, action, config, title } = r; //  data =  [{NAME, TYPE, DESCRIPTION},...]
+      const { data, dm, action, config } = r; //  data =  [{NAME, TYPE, DESCRIPTION},...]
       // for test start
       // action.push({batch: {label: "批量提交", type: "global", url: "/test", success: {to: "openreport/promotiondml", param: ["sid"]}}})
       // for test end
-      yield put({ type: 'save', payload: { params: data, dm, action, config, title } });
+      yield put({ type: 'save', payload: { params: data, dm, action, config } });
       if (!data || data.length === 0) {
         // 没有查询参数，不会渲染查询按钮，直接出报表
         yield put({ type: 'fetchData', payload: {} });

@@ -46,3 +46,12 @@ export async function fetchApidata(params) {
   }
 }
 
+// 请求feetype
+export async function fetchFeeType(params) {
+  return requestWithToken('/von-api/open-fee_type', { params });
+}
+
+// 商户列表
+export async function supplyList(params) {
+  return requestWithToken('/von-api/open-term_supply_name', { params });
+}

@@ -9,7 +9,7 @@ import RightContent from '@/components/GlobalHeader/RightContent';
 import { connect } from 'dva';
 import { router } from 'umi';
 import React, { useState, useEffect } from 'react';
-// import logo from '../assets/logo.svg';
+import logo from '../assets/logo.svg';
 import Authorized from '@/utils/Authorized';
 import { formatMessage } from 'umi-plugin-react/locale';
 import {
@@ -50,11 +50,9 @@ const menuDataRender = (menuList: MenuDataItem[]): MenuDataItem[] => {
 };
 
 const BasicLayout: React.FC<BasicLayoutProps> = props => {
-  const { dispatch, children, settings, route, moreMenu } = props;
+  const { dispatch, children, settings, route, moreMenu, auth } = props;
   const [components, setComponents] = useState<Map<string, any>>();
-  /**
-   * constructor
-   */
+
   function addMoreMenu(menuItem: ServerMenu) {
     if (menuItem.children && menuItem.children.length > 0) {
       // menuItem.children.forEach(t => addMoreMenu(t));
@@ -79,6 +77,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = props => {
       }
     }
   }
+
   useEffect(() => {
     if (route && route.routes && moreMenu) {
       moreMenu.forEach(addMoreMenu);
@@ -111,7 +110,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = props => {
     });
   return (
     <BasicLayoutComponents
-      logo={'https://pic.vongcloud.com/images/62a9955aa2a1117cab560e33.png'}
+      logo={logo}
       onCollapse={handleMenuCollapse}
       menuItemRender={(menuItemProps, defaultDom) => {
         return <Link to={menuItemProps.path}>{defaultDom}</Link>;
@@ -142,5 +141,6 @@ const BasicLayout: React.FC<BasicLayoutProps> = props => {
 export default connect(({ global, settings }: ConnectState) => ({
   collapsed: global.collapsed,
   moreMenu: global.moreMenu,
+  auth: global.auth,
   settings,
 }))(BasicLayout);

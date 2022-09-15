@@ -1,0 +1,135 @@
+@import '~antd/lib/style/themes/default.less';
+
+:global(.ant-table-thead > tr > th) {
+  background: inherit;
+}
+
+.sku {
+  background: #f66 !important;
+}
+.price_cur {
+  background: #9cc !important;
+}
+.price_ori {
+  background: #ccf !important;
+}
+.color {
+  background: #f96 !important;
+}
+.stock {
+  background: #fcc !important;
+}
+.size {
+  background: #ff9 !important;
+}
+.category {
+  background: #cff !important;
+  border-color: #00f !important;
+}
+
+.highlight {
+  color: red;
+}
+
+.masonry img {
+  max-width: 100%;
+}
+
+.editor img {
+  display: block;
+  max-width: 300px;
+  margin: 10px;
+}
+
+.covers div {
+  display: inline-block;
+}
+
+.covers img {
+  width: 100px;
+  height: 100px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.images {
+  width: 300px;
+  padding: 10px;
+  text-align: center;
+}
+
+.switch {
+  display: block;
+  width: 100%;
+  height: 27px;
+  margin-top: 3px;
+  white-space: nowrap;
+  border-radius: 5px;
+}
+:global(.ant-switch::after) {
+  top: 3px;
+}
+
+.tableList {
+  .tableListOperator {
+    margin-bottom: 16px;
+    button {
+      margin-right: 8px;
+    }
+  }
+}
+
+.tableListForm {
+  :global {
+    .ant-form-item {
+      display: flex;
+      margin-right: 0;
+      margin-bottom: 24px;
+      > .ant-form-item-label {
+        width: auto;
+        padding-right: 8px;
+        line-height: 32px;
+      }
+      .ant-form-item-control {
+        line-height: 32px;
+      }
+    }
+    .ant-form-item-control-wrapper {
+      flex: 1;
+    }
+  }
+  .submitButtons {
+    display: block;
+    margin-bottom: 24px;
+    white-space: nowrap;
+  }
+}
+
+.Simple {
+  padding: 5px;
+  border: 1px solid #e9e9e9;
+  border-radius: 4px;
+  .tag {
+    margin: 3px;
+    padding: 0 8px;
+    color: #666;
+    font-size: 13px;
+    line-height: 30px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px dashed #ccc;
+    border-radius: 4px;
+  }
+  .delete {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    -moz-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+  }
+}

@@ -14,10 +14,11 @@ function Login({ login: { uri, ticket } }) {
     window.location.href = '/';
   }
   // const site =
-  //   document.domain === 'localhost'
-  //     ? 'https://runshang.vongcloud.com/ana-api/'
-  //     : // 'http://test.path-analytics.com/ana-api/'
-  //       `${window.location.protocol}//${document.domain}/ana-api/`;
+  // 'https://wap.vongcloud.com/user/';
+  // document.domain === 'localhost'
+  //   ? 'https://youzan-erp.vongcloud.com/ana-api/'
+  //   : // 'http://test.path-analytics.com/ana-api/'
+  //     `${window.location.protocol}//${document.domain}/ana-api/`;
 
   return ticket ? (
     <img

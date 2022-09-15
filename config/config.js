@@ -7,7 +7,7 @@ import routes from './router.config';
 // const { pwa, primaryColor } = defaultSettings; // preview.pro.ant.design only do not use in your production ;
 // preview.pro.ant.design 专用环境变量，请不要在你的项目中使用它。
 
-const primaryColor = '#07C160';
+const primaryColor = '#1890FF';
 const pwa = false;
 
 const { ANT_DESIGN_PRO_ONLY_DO_NOT_USE_IN_YOUR_PRODUCTION, TEST, NODE_ENV } = process.env;
@@ -110,18 +110,14 @@ export default {
   },
   proxy: {
     '/ana-api/': {
-      target: 'https://map.outletscn.com/',
+      // target: 'http://test.path-analytics.com/',
+      target: 'https://youzan-erp.vongcloud.com/',
       changeOrigin: true,
-      secure: false,
-    },
-    '/xzs-api/': {
-      // target: 'https://xzs.vongcloud.com/',
-      target: 'https://chunting.vongcloud.com/',
-      changeOrigin: true,
-      pathRewrite: { '^/xzs-api': '/' },
+      // pathRewrite: { '^/ana-api': '' },
     },
     '/static/': {
-      target: 'https://map.outletscn.com/',
+      // target: 'http://test.path-analytics.com/',
+      target: 'https://youzan-erp.vongcloud.com/',
       changeOrigin: true,
     },
     '/von-api/': {
@@ -130,9 +126,21 @@ export default {
       pathRewrite: { '^/von-api': '/lepos' },
     },
     '/yz-api/': {
-      target: 'https://map.outletscn.com/',
+      target: 'https://dev.vongcloud.com/',
       changeOrigin: true,
-      secure: false,
+      pathRewrite: { '^/yz-api': '/yzpos' },
+    },
+    '/xzs-api/': {
+      // target: 'https://xzs.vongcloud.com/',
+      target: 'https://chunting.vongcloud.com/',
+      changeOrigin: true,
+      pathRewrite: { '^/xzs-api': '/' },
+    },
+    '/ssxzs-api/': {
+      target: 'https://xzs.vongcloud.com/',
+      // target: 'https://chunting.vongcloud.com/',
+      changeOrigin: true,
+      pathRewrite: { '^/ssxzs-api': '/' },
     },
   },
   ignoreMomentLocale: true,

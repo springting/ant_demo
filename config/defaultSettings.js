@@ -1,8 +1,8 @@
 import { COMPANY_NAME } from '../src/settings';
 
 export default {
-  navTheme: 'light',
-  primaryColor: "#07C160",
+  navTheme: 'dark',
+  primaryColor: '#1890FF',
   layout: 'sidemenu',
   contentWidth: 'Fluid',
   fixedHeader: false,
@@ -12,7 +12,7 @@ export default {
   menu: {
     locale: false,
   },
-  title: `${COMPANY_NAME}`,
+  title: `${COMPANY_NAME}-中台`,
   pwa: false,
   iconfontUrl: '',
   disableLocal: true, // 禁用多语言功能

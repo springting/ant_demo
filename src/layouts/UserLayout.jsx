@@ -41,7 +41,7 @@ const UserLayout = props => {
           <div className={styles.top}>
             <div className={styles.header}>
               <Link to="/">
-                <img alt="logo" className={styles.logo} src={"https://pic.vongcloud.com/images/62a9955aa2a1117cab560e33.png"} />
+                <img alt="logo" className={styles.logo} src={logo} />
                 <span className={styles.title}>{COMPANY_NAME}-中台登录</span>
               </Link>
             </div>
